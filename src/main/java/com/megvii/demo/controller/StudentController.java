@@ -15,7 +15,7 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    StudentService studentService;
+    private StudentService studentService;
 
     @ResponseBody
     @GetMapping("/all/list")

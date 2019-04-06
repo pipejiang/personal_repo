@@ -12,10 +12,11 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
-    StudentMapper studentMapper;
+    private StudentMapper studentMapper;
 
     @Override
     public List<Student> listAll() {
         return studentMapper.listAll();
     }
+
 }
