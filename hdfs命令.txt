@@ -1,0 +1,88 @@
+# 下载hdfs的文件
+hdfs dfs -get /EML/oozie/APP-PATH-c9d63f85-3877-4427-8d73-cc73a1c4b500/lstm-5VjHo4Q0SZf-ybQ7/stderr ./stderr-1
+
+# 将创建时间超7天的文件/目录删除--此为shell命令
+find ./ -mtime +7 -exec rm -rf {} \;
+
+# 查看是否处于安全模式
+hdfs dfsadmin -safemode get
+
+# 手动关闭安全模式
+hdfs dfsadmin -safemode leave
+
+# 查看hdfs文件内容
+hdfs dfs -cat url（url为文件路径）
+
+# 解压shareLib并添加到hdfs
+tar -zxvf oozie-sharelib-5.0.0.tar.gz 
+hadoop fs -put share share 
+
+# 阿里云服务器登录信息
+47.92.250.122 root/Casic201905
+mysql root/123456
+
+# 172.16.1.14--Nginx路径
+/usr/local/nginx/sbin
+重启命令：./nginx -s reload
+服务器重启后启动nginx命令： /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+验证配置文件是否正确： 切换到目录下， 执行./nginx -t命令，出现"XXX/X/nginx.conf test is successful"说明配置文件正确
+
+# hadoop-slave1和hadoop-slave2相互不能ssh登录的问题
+1.确认docker镜像中的ssh服务是否是启动的（命令： netstat -antulp | grep ssh）;
+2.如果确认1后，还未修复，需要修改/etc/ssh/ssh_config 中的Port的值为22。
+
+# hdfs安全模式相关
+hadoop dfsadmin -safemode leave   强制NameNode退出安全模式
+hadoop dfsadmin -safemode enter   进入安全模式
+hadoop dfsadmin -safemode get     查看安全模式状态
+hadoop dfsadmin -safemode wait    等待一直到安全模式结束
+
+# 解决因服务器断电而使hdfs上的数据丢失的问题
+步骤：
+1.将master、slave1、slave2的/usr/local/hadoop/dfs/data/current
+下的VERSION文件中的clusterID修改为一致的值
+2.在master节点上的~路径下，sh stop-all.sh停止相关服务
+3.在master节点上的~路径下，sh restart.sh重启相关服务
+[注意]:可能会出现sshd服务未启动而报"Connection refused"的错误，所以要确保sshd服务的正常
+
+
+# 根据protobuf文件生成java类
+protoc .\feature_statistics.proto --java_out=./
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
