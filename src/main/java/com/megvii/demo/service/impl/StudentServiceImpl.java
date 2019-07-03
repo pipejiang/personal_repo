@@ -22,4 +22,9 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.listAll();
     }
 
+    @Override
+    public Student queryByKey(Long id) {
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
 }

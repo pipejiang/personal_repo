@@ -8,8 +8,7 @@ import org.springframework.context.annotation.ComponentScans;
 
 @SpringBootApplication
 @ComponentScans(value = {
-        @ComponentScan("com.megvii.demo.service"),
-        @ComponentScan("com.megvii.demo.dao")
+        @ComponentScan("com.megvii")
 })
 @MapperScan("com.megvii.demo.dao")
 public class DemoApplication {

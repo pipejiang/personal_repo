@@ -1,100 +1,108 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.megvii.demo.dao.StudentMapper" >
-  <resultMap id="BaseResultMap" type="com.megvii.demo.domain.Student" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="student_id" property="studentId" jdbcType="VARCHAR" />
-    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
-    <result column="recent_grade" property="recentGrade" jdbcType="TINYINT" />
-    <result column="recent_class" property="recentClass" jdbcType="TINYINT" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, student_id, student_name, recent_grade, recent_class
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_student
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_student
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.megvii.demo.domain.Student" >
-    insert into t_student (id, student_id, student_name, 
-      recent_grade, recent_class)
-    values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, 
-      #{recentGrade,jdbcType=TINYINT}, #{recentClass,jdbcType=TINYINT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.megvii.demo.domain.Student" >
-    insert into t_student
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="studentId != null" >
-        student_id,
-      </if>
-      <if test="studentName != null" >
-        student_name,
-      </if>
-      <if test="recentGrade != null" >
-        recent_grade,
-      </if>
-      <if test="recentClass != null" >
-        recent_class,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="studentId != null" >
-        #{studentId,jdbcType=VARCHAR},
-      </if>
-      <if test="studentName != null" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.megvii.demo.dao.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.megvii.demo.domain.Student">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="student_id" property="studentId" jdbcType="VARCHAR"/>
+        <result column="student_name" property="studentName"
+                jdbcType="VARCHAR"/>
+        <result column="recent_grade" property="recentGrade"
+                jdbcType="TINYINT"/>
+        <result column="recent_class" property="recentClass"
+                jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, student_id, student_name, recent_grade, recent_class
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap"
+            parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from t_student
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_student
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.megvii.demo.domain.Student">
+        insert into t_student (id, student_id, student_name,
+        recent_grade, recent_class)
+        values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=VARCHAR},
         #{studentName,jdbcType=VARCHAR},
-      </if>
-      <if test="recentGrade != null" >
-        #{recentGrade,jdbcType=TINYINT},
-      </if>
-      <if test="recentClass != null" >
-        #{recentClass,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.megvii.demo.domain.Student" >
-    update t_student
-    <set >
-      <if test="studentId != null" >
-        student_id = #{studentId,jdbcType=VARCHAR},
-      </if>
-      <if test="studentName != null" >
+        #{recentGrade,jdbcType=TINYINT}, #{recentClass,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.megvii.demo.domain.Student">
+        insert into t_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="studentId != null">
+                student_id,
+            </if>
+            <if test="studentName != null">
+                student_name,
+            </if>
+            <if test="recentGrade != null">
+                recent_grade,
+            </if>
+            <if test="recentClass != null">
+                recent_class,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="studentId != null">
+                #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="studentName != null">
+                #{studentName,jdbcType=VARCHAR},
+            </if>
+            <if test="recentGrade != null">
+                #{recentGrade,jdbcType=TINYINT},
+            </if>
+            <if test="recentClass != null">
+                #{recentClass,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.megvii.demo.domain.Student">
+        update t_student
+        <set>
+            <if test="studentId != null">
+                student_id = #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="studentName != null">
+                student_name = #{studentName,jdbcType=VARCHAR},
+            </if>
+            <if test="recentGrade != null">
+                recent_grade = #{recentGrade,jdbcType=TINYINT},
+            </if>
+            <if test="recentClass != null">
+                recent_class = #{recentClass,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey"
+            parameterType="com.megvii.demo.domain.Student">
+        update t_student
+        set student_id = #{studentId,jdbcType=VARCHAR},
         student_name = #{studentName,jdbcType=VARCHAR},
-      </if>
-      <if test="recentGrade != null" >
         recent_grade = #{recentGrade,jdbcType=TINYINT},
-      </if>
-      <if test="recentClass != null" >
-        recent_class = #{recentClass,jdbcType=TINYINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.megvii.demo.domain.Student" >
-    update t_student
-    set student_id = #{studentId,jdbcType=VARCHAR},
-      student_name = #{studentName,jdbcType=VARCHAR},
-      recent_grade = #{recentGrade,jdbcType=TINYINT},
-      recent_class = #{recentClass,jdbcType=TINYINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        recent_class = #{recentClass,jdbcType=TINYINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 
-  <select id="listAll" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from t_student
-  </select>
+    <select id="listAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_student
+    </select>
 
 </mapper>

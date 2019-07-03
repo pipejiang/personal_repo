@@ -27,4 +27,11 @@ public class StudentController {
         return studentService.listAll();
     }
 
+    @ApiOperation(value = "根据id查询学员", notes = "学员对象")
+    @ResponseBody
+    @GetMapping("/test")
+    public Student test(Long id){
+        return studentService.queryByKey(id);
+    }
+
 }
